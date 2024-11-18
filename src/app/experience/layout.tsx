@@ -18,7 +18,7 @@ export default function Layout({
 }>) {
 
 	return (
-		<div className="experience p-10">
+		<div className="experience">
 			<div className={inter.className}>
 				{children}
 			</div>
