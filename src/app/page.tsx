@@ -48,9 +48,15 @@ export default function Home() {
 						</Link>
 						<Link
 							href="/contact"
-							className="font-bold text-slate-500 underline "
+							className="font-bold text-slate-600 underline "
 						>
 							Get in Touch
+						</Link>
+						<Link
+							href="/"
+							className="font-bold text-slate-500 underline "
+						>
+							Resume
 						</Link>
 					</div>
 				</div>

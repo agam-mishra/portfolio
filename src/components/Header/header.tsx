@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Header() {
 	return (
-		<div className="header mt-6 mb-16 mx-20 flex justify-between text-xl">
+		<div className="header mt-6 mb-8 mx-20 flex justify-between text-xl">
 			<div>
 				<Link href={"/"} className="text-lg	italic font-semibold text-red-500">
 					&lt;agamMishra /&gt;
