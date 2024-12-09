@@ -3,6 +3,7 @@ import { Stepper, stepClasses, stepIndicatorClasses, typographyClasses, Step, St
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import { useState } from "react";
 import Image from 'next/image';
+import { StepConnector } from "@mui/material";
 
 interface StepsProps {
 	setShow: (value: string) => void;
@@ -14,21 +15,21 @@ export default function Steps(props: StepsProps) {
 	const [activeStep, setActiveStep] = useState<number | null>(0);
 	const experiencesArr = [
 		{
-			label: "App Dev Engineer 2",
+			label: "App Dev Engineer II",
 			company: "NCR Atleos, Gurugram",
 			duration: "July 2024 - Present",
 			showValue: "sde2",
 			image: "https://cdn.prod.website-files.com/64a2be73942e1d57fed077f3/6542574c8c3cdac8d63a601d_favicon-32x32.png"
 		},
 		{
-			label: "App Dev Engineer 1",
+			label: "App Dev Engineer I",
 			company: "NCR Atleos, Gurugram",
 			duration: "October 2023 - June 2024",
 			showValue: "sde1a",
 			image: "https://cdn.prod.website-files.com/64a2be73942e1d57fed077f3/6542574c8c3cdac8d63a601d_favicon-32x32.png"
 		},
 		{
-			label: "App Dev Engineer 1",
+			label: "App Dev Engineer I",
 			company: "NCR Corporation, Gurugram",
 			duration: "January 2022 - September 2023",
 			showValue: "sde1v",
@@ -92,12 +93,12 @@ export default function Steps(props: StepsProps) {
 		<Stepper
 			orientation="vertical"
 			sx={{
-				'--Stepper-verticalGap': '8rem',
+				'--Stepper-verticalGap': '6rem',
 				'--StepIndicator-size': '2.5rem',
 				'--Step-gap': '1rem',
 				'--Step-connectorInset': '0.5rem',
 				'--Step-connectorRadius': '1rem',
-				'--Step-connectorThickness': '4px',
+				'--Step-connectorThickness': '0px',
 				'--joy-palette-success-solidBg': 'var(--joy-palette-success-400)',
 				// [`& .${stepClasses.completed}`]: {
 				// 	'&::after': { bgcolor: 'success.solidBg' },
@@ -128,7 +129,8 @@ export default function Steps(props: StepsProps) {
 						completed={activeStep !== null && activeStep !== index}
 						onClick={() => handleStepClick(index, step.showValue)}
 						sx={{
-							opacity: activeStep === null || activeStep === index ? 1 : 0.3, // Dim non-active steps
+							opacity: activeStep === null || activeStep === index ? 1 : 0.3,
+							// Dim non-active steps
 						}}
 						indicator={
 							step.image ? (
@@ -166,41 +168,52 @@ export default function Steps(props: StepsProps) {
 								</div>
 							</Stack>
 						)}
+						{!step.isInternship && (
+							<StepConnector
+								sx={{
+									display: index === experiencesArr.length - 1 ? 'none' : 'block', // Hide connector for last step
+								}}
+							/>
+						)}
 					</Step>
 				))
-			)}
+			)
+			}
 
-			{(props.show === "education") && (
-				educationArr.map((step, index) => (
-					<Step
-						key={index}
-						active={activeStep === index}
-						completed={activeStep !== null && activeStep !== index}
-						onClick={() => handleStepClick(index, step.showValue)}
-						sx={{
-							opacity: activeStep === null || activeStep === index ? 1 : 0.3, // Dim non-active steps
-						}}
-						indicator={
-							step.image ? (
-								<StepIndicator variant="soft" color="success">
-									<Image src={step.image} alt="company_logo" width={32} height={32} />
-								</StepIndicator>
-							) : (
-								<StepIndicator variant="soft" color="neutral">
-									{step.image}
-								</StepIndicator>
-							)
-						}
-					>
-						<div className="flex flex-col">
-							<span className="text-lg">{step.label}</span>
-							<span className="text-xs">{step.institution}</span>
-							{step.duration && <span className="text-xs">{step.duration}</span>}
-						</div>
+			{
+				(props.show === "education") && (
+					educationArr.map((step, index) => (
+						<Step
+							key={index}
+							active={activeStep === index}
+							completed={activeStep !== null && activeStep !== index}
+							onClick={() => handleStepClick(index, step.showValue)}
+							sx={{
+								opacity: activeStep === null || activeStep === index ? 1 : 0.3, // Dim non-active steps
+							}}
+							indicator={
+								step.image ? (
+									<StepIndicator variant="soft" color="success">
+										<Image src={step.image} alt="company_logo" width={32} height={32} />
+									</StepIndicator>
+								) : (
+									<StepIndicator variant="soft" color="neutral">
+										{step.image}
+									</StepIndicator>
+								)
+							}
+						>
+							<div className="flex flex-col">
+								<span className="text-lg">{step.label}</span>
+								<span className="text-xs">{step.institution}</span>
+								{step.duration && <span className="text-xs">{step.duration}</span>}
+							</div>
 
-					</Step>
-				))
-			)}
-		</Stepper>
+						</Step>
+					))
+				)
+			}
+
+		</Stepper >
 	);
 }

@@ -7,6 +7,10 @@ const config: Config = {
 		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	theme: {
+		fontFamily: {
+			'parkinsans': ["Parkinsans"],
+			'lora': ["Lora"]
+		},
 		extend: {
 			backgroundImage: {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

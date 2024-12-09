@@ -1,5 +1,10 @@
-export default function Contact() {
+import Image from 'next/image';
+import Contact from '@/components/Contact/contact';
+
+export default function ContactPage() {
 	return (
-		<div>Contact</div>
+		<>
+			<Contact></Contact>
+		</>
 	)
 }
