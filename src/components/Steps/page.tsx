@@ -4,6 +4,9 @@ import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import { useState } from "react";
 import Image from 'next/image';
 import { StepConnector } from "@mui/material";
+import SchoolRoundedIcon from '@mui/icons-material/SchoolRounded';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import CodeIcon from '@mui/icons-material/Code';
 
 interface StepsProps {
 	setShow: (value: string) => void;
@@ -57,7 +60,7 @@ export default function Steps(props: StepsProps) {
 			institution: "SRM University, Sonepat, Haryana",
 			duration: "August 2016 - May 2020",
 			showValue: "btech",
-			image: "https://cdn.prod.website-files.com/64a2be73942e1d57fed077f3/6542574c8c3cdac8d63a601d_favicon-32x32.png"
+			image: ""
 		},
 		{
 			label: "Higher Secondary School",
@@ -74,6 +77,25 @@ export default function Steps(props: StepsProps) {
 			image: "https://cdn.prod.website-files.com/64a2be73942e1d57fed077f3/6542574c8c3cdac8d63a601d_favicon-32x32.png"
 		},
 	]
+
+	const aboutArr = [
+		{
+			label: "Technologies I Work With",
+			showValue: "technology",
+			icon: <CodeIcon fontSize="large" />
+		},
+		// {
+		// 	label: "Certifications",
+		// 	showValue: "certifications",
+		// 	icon: <WorkspacePremiumIcon />
+		// },
+		{
+			label: "Services",
+			showValue: "services",
+			icon: <SchoolRoundedIcon fontSize="large" />
+		},
+	]
+
 
 	// Function to scroll the right content to the top
 	const scrollToTop = () => {
@@ -100,9 +122,7 @@ export default function Steps(props: StepsProps) {
 				'--Step-connectorRadius': '1rem',
 				'--Step-connectorThickness': '0px',
 				'--joy-palette-success-solidBg': 'var(--joy-palette-success-400)',
-				// [`& .${stepClasses.completed}`]: {
-				// 	'&::after': { bgcolor: 'success.solidBg' },
-				// },
+				'maxHeight': 'min-content',
 				[`& .${stepClasses.active}`]: {
 					[`& .${stepIndicatorClasses.root}`]: {
 						border: '4px solid',
@@ -110,9 +130,6 @@ export default function Steps(props: StepsProps) {
 						boxShadow: (theme) => `0 0 0 1px ${theme.vars.palette.primary[500]}`,
 					},
 				},
-				// [`& .${stepClasses.disabled} *`]: {
-				// 	color: 'neutral.softDisabledColor',
-				// },
 				[`& .${typographyClasses['title-sm']}`]: {
 					textTransform: 'uppercase',
 					letterSpacing: '1px',
@@ -130,7 +147,7 @@ export default function Steps(props: StepsProps) {
 						onClick={() => handleStepClick(index, step.showValue)}
 						sx={{
 							opacity: activeStep === null || activeStep === index ? 1 : 0.3,
-							// Dim non-active steps
+							paddingLeft: "5px"
 						}}
 						indicator={
 							step.image ? (
@@ -168,21 +185,21 @@ export default function Steps(props: StepsProps) {
 								</div>
 							</Stack>
 						)}
-						{!step.isInternship && (
+						{/* {!step.isInternship && (
 							<StepConnector
 								sx={{
 									display: index === experiencesArr.length - 1 ? 'none' : 'block', // Hide connector for last step
 								}}
 							/>
-						)}
+						)} */}
 					</Step>
 				))
 			)
 			}
 
 			{
-				(props.show === "education") && (
-					educationArr.map((step, index) => (
+				(props.show === "about") && (
+					aboutArr.map((step, index) => (
 						<Step
 							key={index}
 							active={activeStep === index}
@@ -192,28 +209,16 @@ export default function Steps(props: StepsProps) {
 								opacity: activeStep === null || activeStep === index ? 1 : 0.3, // Dim non-active steps
 							}}
 							indicator={
-								step.image ? (
-									<StepIndicator variant="soft" color="success">
-										<Image src={step.image} alt="company_logo" width={32} height={32} />
-									</StepIndicator>
-								) : (
-									<StepIndicator variant="soft" color="neutral">
-										{step.image}
-									</StepIndicator>
-								)
+								step?.icon
 							}
 						>
 							<div className="flex flex-col">
 								<span className="text-lg">{step.label}</span>
-								<span className="text-xs">{step.institution}</span>
-								{step.duration && <span className="text-xs">{step.duration}</span>}
 							</div>
-
 						</Step>
 					))
 				)
 			}
-
 		</Stepper >
 	);
 }

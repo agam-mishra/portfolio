@@ -11,8 +11,8 @@ export default function Header() {
 
 			<div className="navigation-wrap">
 				<nav className="flex gap-10">
+					<Link href={"/about"}>About</Link>
 					<Link href={"/experience"}>Experience</Link>
-					<Link href={"/education"}>Education</Link>
 					<Link href={"/projects"}>Projects</Link>
 					<Link href={"/contact"}>Contact</Link>
 				</nav>

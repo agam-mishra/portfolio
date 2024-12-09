@@ -32,35 +32,37 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 	};
 
 	return (
-		<Box className="relative w-full max-w-5xl mx-auto">
-			{/* Carousel Container */}
-			<Box className="flex items-center justify-center space-x-4">
-				{/* Left Preview */}
-				<img
-					src={images[getIndex(currentIndex - 1)]}
-					alt="Previous"
-					className="w-32 h-32 sm:w-48 sm:h-48 object-cover opacity-60 rounded-lg transition-transform duration-300 transform scale-75"
-				/>
+		<div className="rounded p-4">
 
-				{/* Center Image */}
-				<Box className="relative">
+			<Box className="relative w-full max-w-5xl mx-auto">
+				{/* Carousel Container */}
+				<Box className="flex items-center justify-center space-x-4">
+					{/* Left Preview */}
 					<img
-						src={images[currentIndex]}
-						alt="Current"
-						className="w-64 h-64 sm:w-96 sm:h-96 object-cover rounded-lg shadow-lg"
+						src={images[getIndex(currentIndex - 1)]}
+						alt="Previous"
+						className="w-32 h-32 sm:w-48 sm:h-48 object-cover opacity-60 rounded-lg transition-transform duration-300 transform scale-75"
+					/>
+
+					{/* Center Image */}
+					<Box className="relative">
+						<img
+							src={images[currentIndex]}
+							alt="Current"
+							className="w-64 h-64 sm:w-96 sm:h-96 object-cover rounded-lg shadow-lg"
+						/>
+					</Box>
+
+					{/* Right Preview */}
+					<img
+						src={images[getIndex(currentIndex + 1)]}
+						alt="Next"
+						className="w-32 h-32 sm:w-48 sm:h-48 object-cover opacity-60 rounded-lg transition-transform duration-300 transform scale-75"
 					/>
 				</Box>
 
-				{/* Right Preview */}
-				<img
-					src={images[getIndex(currentIndex + 1)]}
-					alt="Next"
-					className="w-32 h-32 sm:w-48 sm:h-48 object-cover opacity-60 rounded-lg transition-transform duration-300 transform scale-75"
-				/>
-			</Box>
-
-			{/* Navigation Buttons */}
-			{/* <Box className="absolute inset-0 flex items-center justify-between px-4">
+				{/* Navigation Buttons */}
+				{/* <Box className="absolute inset-0 flex items-center justify-between px-4">
 				<Button
 					variant="contained"
 					color="primary"
@@ -79,8 +81,8 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 				</Button>
 			</Box> */}
 
-			{/* Indicators */}
-			{/* <Box className="flex justify-center mt-4 space-x-2">
+				{/* Indicators */}
+				{/* <Box className="flex justify-center mt-4 space-x-2">
 				{images.map((_, index) => (
 					<Box
 						key={index}
@@ -88,7 +90,8 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 					/>
 				))}
 			</Box> */}
-		</Box>
+			</Box>
+		</div>
 	);
 };
 
