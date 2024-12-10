@@ -13,76 +13,107 @@ import Link from 'next/link';
 
 export default function Contact() {
 	return (
-		<div className="flex flex-col">
-			<div className="flex justify-center items-center basis-full">
-				<Image src="/contact.gif" height={200} width={200} alt="" unoptimized />
-				{"Let's get in touch for some exciting endevaours together."}
+		<div className="flex flex-col gap-6 md:p-2">
+			<div className="flex max-md:flex-col items-center justify-center text-center gap-4">
+				<Image
+					src="/contact.gif"
+					height={200}
+					width={200}
+					alt="Contact animation"
+					unoptimized
+				/>
+				<Typography level="h4" className="text-lg font-semibold">
+					{"Let's get in touch for some exciting endeavours together."}
+				</Typography>
 			</div>
-			<div className="flex gap-20 justify-center items-center">
-				<div className="flex justify-center items-center flex-1/2">
-					<Card sx={{ minWidth: 600 }}>
-						<div className="py-8 lg:py-4 px-4 mx-auto max-w-screen-md">
-							<form className="space-y-8">
-								<div>
-									<TextField
-										id="name"
-										label="Your Name"
-										variant="outlined"
-										fullWidth
-										required
-										className=""
-									/>
+
+			<div className="flex flex-col lg:flex-row gap-8 lg:gap-20 justify-center items-center">
+				<div className="flex justify-center items-center flex-1 w-full max-w-sm">
+					<Card sx={{ width: '100%', boxShadow: 'lg' }}>
+						<CardContent className="flex flex-col lg:flex-row items-center gap-4">
+							<Image
+								src="/agam.jpeg"
+								alt="Agam Mishra"
+								width={200}
+								height={200}
+								className="rounded-full"
+							/>
+							<Typography level="h1" className="text-center lg:text-left">
+								Agam Mishra
+							</Typography>
+						</CardContent>
+						<CardContent className="socials flex flex-col gap-2 pt-4">
+							<Typography level="body-md">
+								<a href="mailto:agammishra05@gmail.com" className="flex items-center text-inherit no-underline">
+									<Mail className="mr-2" /> agammishra05@gmail.com
+								</a>
+							</Typography>
+							<Typography level="body-md">
+								<GitHub />{' '}
+								<Link href="https://github.com/agam-mishra/">agam-mishra</Link>
+							</Typography>
+							<Typography level="body-md">
+								<LinkedIn />{' '}
+								<Link href="https://www.linkedin.com/in/agammishra">
+									Agam Mishra
+								</Link>
+							</Typography>
+							<Typography level="body-md">
+								<Instagram />{' '}
+								<Link href="https://www.instagram.com/agam_mishra">
+									@agam_mishra
+								</Link>
+							</Typography>
+							<Typography level="body-md">
+								<Twitter />{' '}
+								<Link href="https://x.com/agammishra10">@agammishra10</Link>
+							</Typography>
+						</CardContent>
+					</Card>
+				</div>
+
+				<div className="flex justify-center items-center flex-1 w-full max-w-lg">
+					<Card className="w-full">
+						<div className="p-4">
+							<form className="space-y-6">
+								<TextField
+									id="name"
+									label="Your Name"
+									variant="outlined"
+									fullWidth
+									required
+								/>
+								<TextField
+									id="email"
+									label="Your Email"
+									variant="outlined"
+									fullWidth
+									required
+								/>
+								<TextField
+									id="message"
+									label="Your Message"
+									multiline
+									rows={6}
+									variant="outlined"
+									fullWidth
+									required
+								/>
+								<div className="text-right">
+									<Button
+										type="submit"
+										variant="contained"
+										color="primary"
+										className="w-fit mx-auto"
+									>
+										Send Message
+									</Button>
 								</div>
-								<div>
-									<TextField
-										id="email"
-										label="Your Email"
-										variant="outlined"
-										fullWidth
-										required
-										className=""
-									/>
-								</div>
-								<div>
-									<TextField
-										id="message"
-										label="Your Message"
-										multiline
-										rows={6}
-										variant="outlined"
-										fullWidth
-										required
-										className=""
-									/>
-								</div>
-								<Button
-									type="submit"
-									variant="contained"
-									color="primary"
-									className="w-full sm:w-fit "
-								>
-									Send Message
-								</Button>
 							</form>
 						</div>
 					</Card>
 				</div>
-				<div className="flex-1/2 justify-center items-center">
-					<Card sx={{ width: 400, boxShadow: 'lg', minHeight: "100%" }}>
-						<CardContent className='flex gap-8 items-center '>
-							<Image src="/agam.jpeg" alt={'agam'} width={200} height={200} className='rounded' />
-							<Typography level="h1">Agam Mishra</Typography>
-						</CardContent>
-						<CardContent className="socials flex flex-col gap-2 pt-4">
-							<Typography level="body-md"><Mail /> agammishra05@gmail.com</Typography>
-							<Typography level="body-md"><GitHub /> <Link href={'https://github.com/agam-mishra/'}>agam-mishra</Link></Typography>
-							<Typography level="body-md"><LinkedIn /> <Link href={'https://www.linkedin.com/in/agammishra'}>Agam Mishra</Link></Typography>
-							<Typography level="body-md"><Instagram /> <Link href={'https://www.instagram.com/agam_mishra'}>@agam_mishra</Link></Typography>
-							<Typography level="body-md"><Twitter /> <Link href={'https://x.com/agammishra10'}>@agammishra10 </Link></Typography>
-						</CardContent>
-					</Card>
-				</div>
 			</div>
 		</div>
-	)
+	);
 }
