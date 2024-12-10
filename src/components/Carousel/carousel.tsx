@@ -42,6 +42,8 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 					<Image
 						src={images[getIndex(currentIndex - 1)]}
 						alt="Previous"
+						height={100}
+						width={100}
 						className="w-32 h-32 sm:w-48 sm:h-48 object-cover opacity-60 rounded-lg transition-transform duration-300 transform scale-75"
 					/>
 
@@ -50,6 +52,8 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 						<Image
 							src={images[currentIndex]}
 							alt="Current"
+							height={100}
+							width={100}
 							className="w-64 h-64 sm:w-96 sm:h-96 object-cover rounded-lg shadow-lg"
 						/>
 					</Box>
@@ -58,6 +62,8 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 					<Image
 						src={images[getIndex(currentIndex + 1)]}
 						alt="Next"
+						height={100}
+						width={100}
 						className="w-32 h-32 sm:w-48 sm:h-48 object-cover opacity-60 rounded-lg transition-transform duration-300 transform scale-75"
 					/>
 				</Box>
