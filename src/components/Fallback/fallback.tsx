@@ -5,9 +5,9 @@ const shimmer =
 
 export function ProjectCardSkeleton() {
 	return (
-		<Card  className={`md:basis-1/2 ${shimmer}`}>
+		<Card sx={{ maxWidth: 345, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} className={`basis-full md:basis-1/2 ${shimmer}`}>
 			<CardMedia
-				sx={{ height: 140 }}
+				sx={{ height: 140, maxWidth: 345 }}
 			>
 				<Skeleton
 					animation="wave"
@@ -26,8 +26,10 @@ export function ProjectCardSkeleton() {
 						<Typography>.</Typography>
 					</Skeleton>
 				</Typography>
-				<Typography className='text-sm flex flex-row justify-center items-center gap-4'>Created on : <Skeleton width={80} height={40}> </Skeleton></Typography>
-				<Typography className='text-sm flex flex-row justify-center items-center gap-4'>Updated on : <Skeleton width={80} height={40}> </Skeleton></Typography>
+				<div className="flex flex-col justify-left">
+					<div className='text-sm flex flex-row items-center gap-4'>Created on : <Skeleton width={80} height={40}> </Skeleton></div>
+					<div className='text-sm flex flex-row items-center gap-4'>Updated on : <Skeleton width={80} height={40}> </Skeleton></div>
+				</div>
 			</CardContent>
 
 			<CardActions className='flex flex-row items-start justify-between'>

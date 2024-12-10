@@ -21,9 +21,7 @@ export default function ProjectPage() {
 
 	const fetchRepos = async () => {
 		try {
-			const response = await fetch('/api/getRepos', {
-				cache: 'no-store',
-			});
+			const response = await fetch('/api/getRepos');
 
 			if (!response.ok) {
 				const errorData = await response.json();
@@ -45,7 +43,7 @@ export default function ProjectPage() {
 		fetchRepos();
 		const timer = setTimeout(() => {
 			fetchRepos();
-		}, 100000);
+		}, 2000);
 
 		return () => clearTimeout(timer);
 	}, []);
