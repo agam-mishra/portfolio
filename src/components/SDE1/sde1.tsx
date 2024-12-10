@@ -5,10 +5,9 @@ interface CompanyProp {
 }
 export default function SDE1(props: CompanyProp) {
 	const images = [
-		"/IMG_3111.jpeg",
-		"/IMG_3116.jpeg",
-		"/IMG_3111.jpeg",
-		"/IMG_3116.jpeg",
+		"/images/sde2/IMG_3118.jpg",
+		"/images/sde2/IMG_3116.jpg",
+		"/images/sde2/IMG_3111.jpg",
 	];
 	const company = props.company
 	return (
@@ -24,6 +23,7 @@ export default function SDE1(props: CompanyProp) {
 					<span>
 						{"As time went on, I decided to transition to the Sales Technology team, recognizing that my skills and expertise aligned more closely with the future goals of the team. This move marked the beginning of a new chapter where I focused on tackling long-standing technical debt. One of the most significant challenges I faced during my initial days with the team was upgrading the application from Java 8 to Java 11. This was a crucial task, as the upgrade was expected to have a considerable impact on both the business operations and the overall system performance. It was a complex and high-stakes project, but I was determined to drive the upgrade smoothly to ensure the team's long-term success."}
 					</span>
+					<Carousel images={images} />
 				</div>
 			)}
 			{company === "sde1v" && (

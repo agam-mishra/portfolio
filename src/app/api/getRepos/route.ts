@@ -27,8 +27,6 @@ export async function GET(req: Request) {
 		}
 
 		const data = await response.json();
-		console.log("------", (data));
-
 		return new Response(JSON.stringify(data), { status: 200 });
 	} catch (error) {
 		return new Response(
