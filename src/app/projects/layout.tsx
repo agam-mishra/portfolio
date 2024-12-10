@@ -17,7 +17,7 @@ export default function Layout({
 }>) {
 
 	return (
-		<div className="projects p-2">
+		<div className="projects md:py-4 lg:py-10 p-2 bg-gradient-to-r from-slate-50 to-slate-200 rounded">
 			<div className={inter.className}>
 				{children}
 			</div>
