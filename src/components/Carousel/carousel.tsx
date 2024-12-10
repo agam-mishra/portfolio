@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { Button, Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import Image from "next/image";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import Image from "next/image";
 
-// Type definition for the Carousel component props
 interface CarouselProps {
-	images: string[]; // Array of image URLs
+	images: string[];
 }
 
-const Carousel: React.FC<CarouselProps> = ({ images }) => {
+export default function Carousel(props: CarouselProps) {
+	const images = props.images;
 	const [currentIndex, setCurrentIndex] = useState(0);
 
-	// Auto-scroll functionality
 	useEffect(() => {
 		const interval = setInterval(() => {
 			handleNext();
-		}, 3000); // Change image every 3 seconds
-		return () => clearInterval(interval); // Cleanup on component unmount
+		}, 4000);
+		return () => clearInterval(interval);
 	}, [currentIndex]);
 
 	const handlePrev = () => {
@@ -33,73 +32,80 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 	};
 
 	return (
-		<div className="rounded p-4">
+		<Box className="relative w-full max-w-5xl mx-auto">
+			{/* Mobile and Tablet View */}
+			<Box className="lg:hidden flex items-center justify-center">
+				<Image
+					src={images[currentIndex]}
+					alt={`Image ${currentIndex}`}
+					height={300}
+					width={300}
+					className="w-50 h-auto object-fit rounded-lg shadow-lg transition-transform duration-800 ease-in-out"
+				/>
+			</Box>
 
-			<Box className="relative w-full max-w-5xl mx-auto">
-				{/* Carousel Container */}
-				<Box className="flex items-center justify-center space-x-4">
-					{/* Left Preview */}
+			{/* Large Screen View: Carousel */}
+			<Box className="hidden lg:flex items-center justify-center space-x-4">
+				{/* Left */}
+				<Image
+					src={images[getIndex(currentIndex - 1)]}
+					alt="Previous"
+					height={300}
+					width={300}
+					className="lg:w-60 lg:h-96 object-cover opacity-60 rounded-lg transition-transform duration-1000 ease-in-out transform scale-75"
+				/>
+
+				{/* Center */}
+				<Box className="relative">
 					<Image
-						src={images[getIndex(currentIndex - 1)]}
-						alt="Previous"
-						height={100}
-						width={100}
-						className="w-32 h-32 sm:w-48 sm:h-48 object-cover opacity-60 rounded-lg transition-transform duration-300 transform scale-75"
-					/>
-
-					{/* Center Image */}
-					<Box className="relative">
-						<Image
-							src={images[currentIndex]}
-							alt="Current"
-							height={100}
-							width={100}
-							className="w-64 h-64 sm:w-96 sm:h-96 object-cover rounded-lg shadow-lg"
-						/>
-					</Box>
-
-					{/* Right Preview */}
-					<Image
-						src={images[getIndex(currentIndex + 1)]}
-						alt="Next"
-						height={100}
-						width={100}
-						className="w-32 h-32 sm:w-48 sm:h-48 object-cover opacity-60 rounded-lg transition-transform duration-300 transform scale-75"
+						src={images[currentIndex]}
+						alt="Current"
+						height={400}
+						width={400}
+						className="lg:w-80 lg:h-96 object-cover rounded-lg shadow-lg transition-transform duration-1000 ease-in-out"
 					/>
 				</Box>
 
-				{/* Navigation Buttons */}
-				{/* <Box className="absolute inset-0 flex items-center justify-between px-4">
+				{/* Right */}
+				<Image
+					src={images[getIndex(currentIndex + 1)]}
+					alt="Next"
+					height={300}
+					width={300}
+					className="lg:w-60 lg:h-96 object-cover opacity-60 rounded-lg transition-transform duration-1000 ease-in-out transform scale-75"
+				/>
+			</Box>
+			{/* Navigation Buttons */}
+			{/* <Box className="absolute inset-[-40px] flex items-center justify-between">
 				<Button
-					variant="contained"
+					size="large"
+					// variant="contained"
 					color="primary"
 					onClick={handlePrev}
-					className="!bg-gray-800 !opacity-70 hover:!opacity-90"
+					className="text-gray-700"
 				>
 					<ArrowBackIosIcon />
 				</Button>
 				<Button
-					variant="contained"
+					size="large"
+					// variant="contained"
 					color="primary"
 					onClick={handleNext}
-					className="!bg-gray-800 !opacity-70 hover:!opacity-90"
+					className="text-gray-700"
 				>
 					<ArrowForwardIosIcon />
 				</Button>
 			</Box> */}
 
-				{/* Indicators */}
-				{/* <Box className="flex justify-center mt-4 space-x-2">
+			{/* Indicators */}
+			{/* <Box className="flex justify-center mt-4 space-x-2">
 				{images.map((_, index) => (
 					<Box
 						key={index}
-						className={`w-3 h-3 rounded-full ${currentIndex === index ? "bg-blue-600" : "bg-gray-300"}`}
+						className={`w-3 h-3 rounded-full ${currentIndex === index ? "bg-gray-600" : "bg-gray-300"}`}
 					/>
 				))}
 			</Box> */}
-			</Box>
-		</div>
+		</Box>
 	);
 };
-
-export default Carousel;

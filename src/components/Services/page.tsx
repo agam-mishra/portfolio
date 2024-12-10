@@ -10,7 +10,7 @@ export default function Services() {
 			<div className="basis-1/2 sm:order-1 order-1">
 				<Card variant="outlined">
 					<CardContent className="p-4 items-center">
-						<Image src="/cloud.png" width={100} height={100} alt="cloud" />
+						<Image src="/images/services/cloud.png" width={100} height={100} alt="cloud" />
 						<Typography level="title-lg" className="mb-3 underline">Empowering Businesses with Cloud Solutions</Typography>
 						<Typography>I am skilled in leveraging cloud technologies to help businesses seamlessly transition from on-premises infrastructure to the cloud. With a focus on scalability, security, and efficiency, I design and implement tailored cloud solutions that align with organizational goals. My expertise includes cloud migration strategies, optimizing existing architectures, and building innovative solutions to support business growth and agility in a rapidly evolving digital landscape.</Typography>
 					</CardContent>
@@ -19,7 +19,7 @@ export default function Services() {
 			<div className="basis-1/2 sm:order-2 order-2">
 				<Card variant="solid">
 					<CardContent className="p-4 items-center">
-						<Image src="/application.png" width={100} height={100} alt="application" />
+						<Image src="/images/services/application.png" width={100} height={100} alt="application" />
 						<Typography level="title-lg" className="mb-3 underline" textColor="inherit">
 							Building Dynamic Web Solutions with Modern Technologies
 						</Typography>
@@ -30,7 +30,7 @@ export default function Services() {
 			<div className="basis-1/2 sm:order-3 order-4">
 				<Card variant="solid">
 					<CardContent className="p-4 items-center">
-						<Image src="/backend.png" width={100} height={100} alt="backend" />
+						<Image src="/images/services/backend.png" width={100} height={100} alt="backend" />
 						<Typography level="title-lg" className="mb-3 underline" textColor="inherit">
 							Backend Development
 						</Typography>
@@ -41,7 +41,7 @@ export default function Services() {
 			<div className="basis-1/3 sm:order-4 order-3">
 				<Card variant="outlined">
 					<CardContent className="p-4 items-center">
-						<Image src="/consultation.png" width={100} height={100} alt="consultation" />
+						<Image src="/images/services/consultation.png" width={100} height={100} alt="consultation" />
 						<Typography level="title-lg" className="mb-3 underline">Cloud Solutions for Startups</Typography>
 						<Typography>I provide cloud-based solutions for small businesses. I help businesses deploy websites, scale applications, and optimize performance with minimal infrastructure management. My services include cloud hosting consultation, site deployment, code reviews, and performance optimization to ensure reliable, cost-effective solutions for growth and digital transformation.
 							Additionally, I offer consultations on code reviews, performance optimization, and best practices for building and maintaining web applications. My goal is to ensure that small businesses can access reliable, cost-effective solutions that support their growth and digital transformation.

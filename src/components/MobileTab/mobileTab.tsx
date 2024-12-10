@@ -14,8 +14,8 @@ interface TabsProps {
 }
 
 export default function MobileTab(props: TabsProps) {
-	const [value, setValue] = React.useState(0);
 	const { setShow, show } = props;
+	const [value, setValue] = useState(show === "about" ? "technology" : "sde2");
 
 	const experiencesArr = [
 		{
@@ -73,8 +73,8 @@ export default function MobileTab(props: TabsProps) {
 		},
 	]
 
-	const handleChange = (event: React.SyntheticEvent, newValue: string, tabIndex: number) => {
-		setValue(tabIndex)
+	const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+		setValue(newValue)
 		setShow(newValue);
 	};
 
@@ -89,12 +89,10 @@ export default function MobileTab(props: TabsProps) {
 			<Tabs
 				value={value}
 				onChange={(event, newValue) => {
-					const tabIndex = aboutArr.findIndex((step) => step.showValue === newValue);
-					handleChange(event, newValue, tabIndex);
+					handleChange(event, newValue);
 				}}
 				variant="scrollable"
 				scrollButtons
-				centered
 				aria-label="tabs"
 				sx={{
 					[`& .${tabsClasses.scrollButtons}`]: {
@@ -141,13 +139,6 @@ export default function MobileTab(props: TabsProps) {
 						))
 					)
 				}
-				{/* <Tab label="Item One" />
-				<Tab label="Item Two" />
-				<Tab label="Item Three" />
-				<Tab label="Item Four" />
-				<Tab label="Item Five" />
-				<Tab label="Item Six" />
-				<Tab label="Item Seven" /> */}
 			</Tabs>
 		</Box>
 	);

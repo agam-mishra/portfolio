@@ -31,7 +31,7 @@ export default function Home() {
 				<div className="flex flex-col md:flex-row justify-center items-center gap-6">
 					<div className="mt-4 flex justify-center w-full md:w-1/2">
 						<Image
-							src="/home.svg"
+							src="/images/home/home.svg"
 							alt="Developer Illustration"
 							width={300}
 							height={300}
@@ -62,7 +62,7 @@ export default function Home() {
 							Get in Touch
 						</Link>
 						<Link
-							href="/Agam_Mishra_Resume.pdf"
+							href="/asset/Agam_Mishra_Resume.pdf"
 							className="font-bold text-slate-500 underline"
 							target="_blank"
 						// download="Agam_Mishra_Resume.pdf"

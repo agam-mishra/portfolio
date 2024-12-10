@@ -24,7 +24,7 @@ export default function ProjectCard({ repo }: ProjectCardProps) {
 		<Card sx={{ maxWidth: 345, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} className="basis-full md:basis-1/2">
 			<CardMedia
 				sx={{ height: 140 }}
-				image="/project.svg"
+				image="/images/project/project.svg"
 				title="green iguana"
 			/>
 			<CardContent sx={{ flexGrow: 1 }}>

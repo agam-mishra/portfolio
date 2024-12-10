@@ -2,10 +2,9 @@ import Carousel from "../Carousel/carousel";
 
 export default function SDE2() {
 	const images = [
-		"/IMG_3111.jpeg",
-		"/IMG_3116.jpeg",
-		"/IMG_3111.jpeg",
-		"/IMG_3116.jpeg",
+		"/images/sde2/IMG_3118.jpg",
+		"/images/sde2/IMG_3116.jpg",
+		"/images/sde2/IMG_3111.jpg",
 	];
 	return (
 		<div className="sde2-wrapper flex flex-col gap-8">
