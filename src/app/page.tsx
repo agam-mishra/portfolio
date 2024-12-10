@@ -1,12 +1,11 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { Button, Typography } from "@mui/joy";
 import Link from "next/link";
 
-
 export default function Home() {
 	return (
-		<div className="flex flex-col items-center bg-gradient-to-b from-slate-100 to-white px-6 py-6 text-center rounded">
+		<div className="flex flex-col items-center bg-gradient-to-b from-slate-100 to-white px-4 py-6 text-center rounded">
 			<div className="w-full max-w-3xl space-y-6 gap-6">
 				<Typography
 					level="h2"
@@ -19,8 +18,8 @@ export default function Home() {
 					level="body-lg"
 					className="text-lg sm:text-xl md:text-2xl text-gray-600 text-left"
 				>
-					A passionate developer with <span className="font-semibold">4 years </span> of experience crafting impactful and innovative solutions.
-					I specialize in <span className="font-semibold">building modern</span> web applications, enhancing backend systems, leveraging <span className="font-semibold">cloud </span> technologies, and <span className="font-semibold">optimizing </span>processes to solve real-world challenges efficiently and effectively.
+					A passionate developer with <span className="font-semibold">4 years</span> of experience crafting impactful and innovative solutions.
+					I specialize in <span className="font-semibold">building modern</span> web applications, enhancing backend systems, leveraging <span className="font-semibold">cloud</span> technologies, and <span className="font-semibold">optimizing</span> processes to solve real-world challenges efficiently and effectively.
 				</Typography>
 
 				<div className=" text-gray-500 italic">
@@ -29,8 +28,8 @@ export default function Home() {
 					</Typography>
 				</div>
 
-				<div className="flex flex-row justify-center items-center">
-					<div className="mt-4 flex items-center justify-center w-full flex-1/2">
+				<div className="flex flex-col md:flex-row justify-center items-center gap-6">
+					<div className="mt-4 flex justify-center w-full md:w-1/2">
 						<Image
 							src="/home.svg"
 							alt="Developer Illustration"
@@ -38,18 +37,18 @@ export default function Home() {
 							height={300}
 							className="animate-float"
 						/>
+						{/* Uncomment for video */}
 						{/* <video
-							className="rounded-md shadow-lg"
-
-							autoPlay
-							loop
-							muted
-						>
-							<source src="/code_video.mp4" type="video/mp4" />
-							Your browser does not support the video tag.
-						</video> */}
+              className="rounded-md shadow-lg"
+              autoPlay
+              loop
+              muted
+            >
+              <source src="/code_video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video> */}
 					</div>
-					<div className="flex justify-center gap-4 text-lg flex-1/2 w-full flex-col">
+					<div className="flex justify-center gap-6 w-full md:w-1/2 flex-col text-lg">
 						<Link
 							href="/projects"
 							className="font-bold text-slate-700 underline"
@@ -58,7 +57,7 @@ export default function Home() {
 						</Link>
 						<Link
 							href="/contact"
-							className="font-bold text-slate-600 underline "
+							className="font-bold text-slate-600 underline"
 						>
 							Get in Touch
 						</Link>
@@ -72,12 +71,7 @@ export default function Home() {
 						</Link>
 					</div>
 				</div>
-
-
 			</div>
-
-
 		</div>
-
 	);
 }
