@@ -27,7 +27,7 @@ export default function RootLayout({
 				<link rel="icon" href="/a.png" />
 				<link rel="icon" type="image/png" href="/a.png" />
 			</head>
-			<body className={`${inter.className} px-4 lg:px-32`}>
+			<body className={`${inter.className} px-2 lg:px-32`}>
 				<Header />
 				{children}
 			</body>

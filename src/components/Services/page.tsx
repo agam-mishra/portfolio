@@ -6,8 +6,8 @@ import Image from 'next/image';
 
 export default function Services() {
 	return (
-		<div className="services-wrapper grid grid-cols-2 gap-4 justify-self-center">
-			<div className="basis-1/2">
+		<div className="services-wrapper grid md:grid-cols-2 gap-4 justify-self-center">
+			<div className="basis-1/2 sm:order-1 order-1">
 				<Card variant="outlined">
 					<CardContent className="p-4 items-center">
 						<Image src="/cloud.png" width={100} height={100} alt="cloud" />
@@ -16,7 +16,7 @@ export default function Services() {
 					</CardContent>
 				</Card>
 			</div>
-			<div className="basis-1/2">
+			<div className="basis-1/2 sm:order-2 order-2">
 				<Card variant="solid">
 					<CardContent className="p-4 items-center">
 						<Image src="/application.png" width={100} height={100} alt="application" />
@@ -27,7 +27,7 @@ export default function Services() {
 					</CardContent>
 				</Card>
 			</div>
-			<div className="basis-1/2">
+			<div className="basis-1/2 sm:order-3 order-4">
 				<Card variant="solid">
 					<CardContent className="p-4 items-center">
 						<Image src="/backend.png" width={100} height={100} alt="backend" />
@@ -38,7 +38,7 @@ export default function Services() {
 					</CardContent>
 				</Card>
 			</div>
-			<div className="basis-1/3">
+			<div className="basis-1/3 sm:order-4 order-3">
 				<Card variant="outlined">
 					<CardContent className="p-4 items-center">
 						<Image src="/consultation.png" width={100} height={100} alt="consultation" />
