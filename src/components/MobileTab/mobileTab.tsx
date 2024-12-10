@@ -6,6 +6,7 @@ import { useState } from 'react';
 import CodeIcon from '@mui/icons-material/Code';
 import SchoolRoundedIcon from '@mui/icons-material/SchoolRounded';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import Image from 'next/image';
 
 interface TabsProps {
 	setShow: (value: string) => void;
@@ -81,7 +82,7 @@ export default function MobileTab(props: TabsProps) {
 		<Box
 			sx={{
 				flexGrow: 1,
-				maxWidth: { xs: 320, sm: 480 },
+				maxWidth: { xs: "100%", sm: "100%" },
 				bgcolor: 'rgb(229 229 229)',
 			}}
 		>
@@ -93,7 +94,8 @@ export default function MobileTab(props: TabsProps) {
 				}}
 				variant="scrollable"
 				scrollButtons
-				aria-label="visible arrows tabs"
+				centered
+				aria-label="tabs"
 				sx={{
 					[`& .${tabsClasses.scrollButtons}`]: {
 						'&.Mui-disabled': { opacity: 0.3 },
@@ -103,31 +105,23 @@ export default function MobileTab(props: TabsProps) {
 
 				{(props.show === "experience") && (
 					experiencesArr.map((step, index) => (
-						<Tab label={step?.label} >
-							{/* <div className="flex flex-col">
-								<span className="text-lg">{step.label}</span>
-								<span className="text-xs">{step.company}</span>
-								{step.duration && <span className="text-xs">{step.duration}</span>}
-							</div> */}
+						<Tab key={index}
+							value={step?.showValue}
+							label={
+								<div className="flex items-center justify-center flex-row gap-2 text-md">
+									{step.image ? (
+										<Image src={step?.image} alt="company_logo" width={16} height={16} />
+									) : (step?.icon)
+									}
+									<div className="flex flex-col text-left">
+										<span>{step?.label}</span>
+										<span>{step.company}</span>
+									</div>
+
+								</div>
+							}
+						>
 						</Tab>
-						// {step.isInternship && (
-						// 	<Stack spacing={1}>
-						// 		<div className="flex flex-col">
-						// 			<span className="text-base">Software Intern</span>
-						// 			<span className="text-sm">XeliumTech Solutions, Gurugram</span>
-						// 			<span className="text-xs">February 2021 - May 2021</span>
-						// 		</div>
-						// 		<div className="flex flex-col">
-						// 			<span className="text-base">Software Intern</span>
-						// 			<span className="text-sm">Advanced Systemics, Delhi</span>
-						// 			<span className="text-xs">October 2019 - July 2020</span>
-						// 		</div>
-						// 		<div className="flex flex-col">
-						// 			<span className="text-base">Software Intern</span>
-						// 			<span className="text-sm">Advanced Systemics, Delhi</span>
-						// 			<span className="text-xs">June 2018 - July 2018</span>
-						// 		</div>
-						// 	</Stack>
 					)))
 				}
 
