@@ -19,11 +19,10 @@ export default function ProjectPage() {
 	const [error, setError] = useState<string | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 
-	// Fetch repositories from the API route
 	const fetchRepos = async () => {
 		try {
 			const response = await fetch('/api/getRepos', {
-				cache: 'no-store', // Avoid caching, always get fresh data
+				cache: 'no-store',
 			});
 
 			if (!response.ok) {
@@ -38,28 +37,23 @@ export default function ProjectPage() {
 			setError('An error occurred while fetching repositories');
 			console.error('Error:', error);
 		} finally {
-			setIsLoading(false); // Set loading to false once fetching is complete
+			setIsLoading(false);
 		}
 	};
 
 	useEffect(() => {
-
 		fetchRepos();
+		const timer = setTimeout(() => {
+			fetchRepos();
+		}, 100000);
 
-		// const timer = setTimeout(() => {
-		// 	fetchRepos();
-		// }, 100000);
-
-		// // Clear the timer if the component is unmounted before the delay completes
-		// return () => clearTimeout(timer);
-
+		return () => clearTimeout(timer);
 	}, []);
 
 	return (
-		<div className="project flex flex-row gap-4 flex-wrap">
+		<div className="project flex flex-row gap-4 flex-wrap justify-center">
 			{error && <p className="error">{error}</p>}
 			{isLoading ? (
-				// Show skeleton while loading
 				<>
 					<ProjectCardSkeleton />
 					<ProjectCardSkeleton />

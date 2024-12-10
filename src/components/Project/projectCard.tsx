@@ -20,9 +20,8 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ repo }: ProjectCardProps) {
-	console.log("repo is ", repo)
 	return (
-		<Card sx={{ maxWidth: 345, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} className="basis-1/2">
+		<Card sx={{ maxWidth: 345, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} className="basis-full md:basis-1/2">
 			<CardMedia
 				sx={{ height: 140 }}
 				image="/project.svg"

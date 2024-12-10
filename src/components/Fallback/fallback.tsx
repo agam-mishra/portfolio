@@ -5,7 +5,7 @@ const shimmer =
 
 export function ProjectCardSkeleton() {
 	return (
-		<Card sx={{ maxWidth: 345 }} className={`basis-1/2 ${shimmer}`}>
+		<Card  className={`md:basis-1/2 ${shimmer}`}>
 			<CardMedia
 				sx={{ height: 140 }}
 			>
