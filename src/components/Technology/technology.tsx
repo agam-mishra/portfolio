@@ -6,10 +6,10 @@ export default function Technology() {
 	return (
 		<div className="technology-wrapper flex flex-col gap-10">
 			<div className="description text-lg">
-				Using a combination of cutting-edge technologies and reliable open-source software I build user-focused, performant apps and websites for smartphones, tablets, and desktops.
+				Using a combination of cutting-edge technologies and reliable open-source software I help in building user-focused, performant apps and websites for smartphones, tablets, and desktops.
 			</div>
 
-			<div className="icons flex gap-4 flex-wrap">
+			<div className="icons flex gap-8 flex-wrap">
 				<div className="flex flex-row gap-2 justify-center items-center bg-slate-50 p-2 rounded">
 					<Image src="/icons/java.png" width={60} height={60} alt="java" />
 					<span>Java</span>

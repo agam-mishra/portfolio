@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Box } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import Image from "next/image";
 
 // Type definition for the Carousel component props
 interface CarouselProps {
@@ -38,7 +39,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 				{/* Carousel Container */}
 				<Box className="flex items-center justify-center space-x-4">
 					{/* Left Preview */}
-					<img
+					<Image
 						src={images[getIndex(currentIndex - 1)]}
 						alt="Previous"
 						className="w-32 h-32 sm:w-48 sm:h-48 object-cover opacity-60 rounded-lg transition-transform duration-300 transform scale-75"
@@ -46,7 +47,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 
 					{/* Center Image */}
 					<Box className="relative">
-						<img
+						<Image
 							src={images[currentIndex]}
 							alt="Current"
 							className="w-64 h-64 sm:w-96 sm:h-96 object-cover rounded-lg shadow-lg"
@@ -54,7 +55,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 					</Box>
 
 					{/* Right Preview */}
-					<img
+					<Image
 						src={images[getIndex(currentIndex + 1)]}
 						alt="Next"
 						className="w-32 h-32 sm:w-48 sm:h-48 object-cover opacity-60 rounded-lg transition-transform duration-300 transform scale-75"

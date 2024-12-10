@@ -25,7 +25,7 @@ export default function ProjectCard({ repo }: ProjectCardProps) {
 		<Card sx={{ maxWidth: 345, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} className="basis-1/2">
 			<CardMedia
 				sx={{ height: 140 }}
-				image="/contemplative-reptile.jpg"
+				image="/project.svg"
 				title="green iguana"
 			/>
 			<CardContent sx={{ flexGrow: 1 }}>
@@ -36,7 +36,7 @@ export default function ProjectCard({ repo }: ProjectCardProps) {
 					{repo?.description}
 				</Typography>
 			</CardContent>
-			<CardContent sx={{margin:"0", paddingY:"0"}}>
+			<CardContent sx={{ margin: "0", paddingY: "0" }}>
 				<Typography className="text-sm">Created on: {formatDate(repo.created_at)}</Typography>
 				<Typography className="text-sm">Updated on: {formatDate(repo.updated_at)}</Typography>
 			</CardContent>

@@ -23,7 +23,7 @@ export default function Services() {
 						<Typography level="title-lg" className="mb-3 underline" textColor="inherit">
 							Building Dynamic Web Solutions with Modern Technologies
 						</Typography>
-						<Typography textColor="inherit">I specialize in building dynamic and high-performance web applications using modern technologies like React, Next.js, and Node.js. By leveraging the power of these tools, I create seamless user experiences and scalable backend systems that meet business needs. Whether it's creating responsive UIs with Tailwind CSS and Material UI, developing robust APIs, or optimizing performance, I focus on delivering fast, reliable, and user-centric solutions.</Typography>
+						<Typography textColor="inherit">{"I specialize in building dynamic and high-performance web applications using modern technologies like React, Next.js, and Node.js. By leveraging the power of these tools, I create seamless user experiences and scalable backend systems that meet business needs. Whether it's creating responsive UIs with Tailwind CSS and Material UI, developing robust APIs, or optimizing performance, I focus on delivering fast, reliable, and user-centric solutions."}</Typography>
 					</CardContent>
 				</Card>
 			</div>
@@ -34,7 +34,7 @@ export default function Services() {
 						<Typography level="title-lg" className="mb-3 underline" textColor="inherit">
 							Backend Development
 						</Typography>
-						<Typography textColor="inherit">I specialize in backend development, leveraging robust technologies such as Java, Node.js, Express, and Python to build scalable, high-performance applications. By translating designers' concepts into reality, I create efficient backend systems that integrate seamlessly with databases and third-party APIs. My expertise includes ensuring data integrity, security, and system scalability, while optimizing performance to meet business requirements. Whether it's building RESTful APIs, handling complex data processing, or implementing cloud-based solutions, I provide reliable backend architecture that supports both user experience and business growth.</Typography>
+						<Typography textColor="inherit">{"I specialize in backend development, leveraging robust technologies such as Java, Node.js, Express, and Python to build scalable, high-performance applications. By translating designers' concepts into reality, I create efficient backend systems that integrate seamlessly with databases and third-party APIs. My expertise includes ensuring data integrity, security, and system scalability, while optimizing performance to meet business requirements. Whether it's building RESTful APIs, handling complex data processing, or implementing cloud-based solutions, I provide reliable backend architecture that supports both user experience and business growth."}</Typography>
 					</CardContent>
 				</Card>
 			</div>

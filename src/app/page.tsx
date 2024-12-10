@@ -12,7 +12,7 @@ export default function Home() {
 					level="h2"
 					className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 animate-fade-in"
 				>
-					Hi, I'm <span className="text-gray-500">Agam Mishra</span>!
+					{"Hi, I'm "}<span className="text-gray-500">Agam Mishra</span>!
 				</Typography>
 
 				<Typography
@@ -38,6 +38,16 @@ export default function Home() {
 							height={300}
 							className="animate-float"
 						/>
+						{/* <video
+							className="rounded-md shadow-lg"
+
+							autoPlay
+							loop
+							muted
+						>
+							<source src="/code_video.mp4" type="video/mp4" />
+							Your browser does not support the video tag.
+						</video> */}
 					</div>
 					<div className="flex justify-center gap-4 text-lg flex-1/2 w-full flex-col">
 						<Link
@@ -53,8 +63,10 @@ export default function Home() {
 							Get in Touch
 						</Link>
 						<Link
-							href="/"
-							className="font-bold text-slate-500 underline "
+							href="/Agam_Mishra_Resume.pdf"
+							className="font-bold text-slate-500 underline"
+							target="_blank"
+						// download="Agam_Mishra_Resume.pdf"
 						>
 							Resume
 						</Link>

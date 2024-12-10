@@ -15,8 +15,8 @@ export default function Contact() {
 	return (
 		<div className="flex flex-col">
 			<div className="flex justify-center items-center basis-full">
-				<Image src="/contact.gif" height={200} width={200} alt=""></Image>
-				Let's get in touch for some exciting endevaours together.
+				<Image src="/contact.gif" height={200} width={200} alt="" unoptimized />
+				{"Let's get in touch for some exciting endevaours together."}
 			</div>
 			<div className="flex gap-20 justify-center items-center">
 				<div className="flex justify-center items-center flex-1/2">

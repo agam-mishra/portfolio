@@ -7,7 +7,7 @@ import { useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Education | Agam Mishra",
+	title: "About | Agam Mishra",
 	description: "Agam Mishra Portfolio Project",
 };
 
