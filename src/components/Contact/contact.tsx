@@ -16,7 +16,7 @@ export default function Contact() {
 		<div className="flex flex-col gap-6 md:p-2">
 			<div className="flex max-md:flex-col items-center justify-center text-center gap-4">
 				<Image
-					src="/contact.gif"
+					src="/images/contact/contact.gif"
 					height={200}
 					width={200}
 					alt="Contact animation"
@@ -32,7 +32,7 @@ export default function Contact() {
 					<Card sx={{ width: '100%', boxShadow: 'lg' }}>
 						<CardContent className="flex flex-col lg:flex-row items-center gap-4">
 							<Image
-								src="/agam.jpeg"
+								src="/images/contact/agam.jpeg"
 								alt="Agam Mishra"
 								width={200}
 								height={200}
