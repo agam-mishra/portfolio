@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Dialog } from "@mui/material";
 import CancelIcon from '@mui/icons-material/Cancel';
 import MenuIcon from '@mui/icons-material/Menu';
+import ThemeToggle from "@/components/ThemeToggle/themeToggle";
 
 export default function Header() {
 	const [openModal, setOpenModal] = useState(false);
@@ -15,21 +16,23 @@ export default function Header() {
 	return (
 		<div className="header my-2 md:m-4 lg:my-8 flex items-center text-xl justify-between">
 
-			<Link href={"/"} className="text-lg italic font-semibold text-red-500">
+			<Link href={"/"} className="font-mono text-lg font-semibold text-[var(--fg)]">
 				&lt;agamMishra /&gt;
 			</Link>
 
-			<div className="navigation-wrap hidden lg:flex">
-				<nav className="flex gap-10">
-					<Link href={"/about"}>About</Link>
-					<Link href={"/experience"}>Experience</Link>
-					<Link href={"/projects"}>Projects</Link>
-					<Link href={"/contact"}>Contact</Link>
+			<div className="navigation-wrap hidden lg:flex items-center gap-10">
+				<nav className="font-mono text-sm flex gap-10">
+					<Link href={"/about"} className="text-[var(--fg-muted)] hover:text-[var(--accent)] transition-colors">About</Link>
+					<Link href={"/experience"} className="text-[var(--fg-muted)] hover:text-[var(--accent)] transition-colors">Experience</Link>
+					<Link href={"/projects"} className="text-[var(--fg-muted)] hover:text-[var(--accent)] transition-colors">Projects</Link>
+					<Link href={"/contact"} className="text-[var(--fg-muted)] hover:text-[var(--accent)] transition-colors">Contact</Link>
 				</nav>
+				<ThemeToggle />
 			</div>
 
-			<div className="lg:hidden flex items-center">
-				<button onClick={handleModalToggle} className="text-2xl">
+			<div className="lg:hidden flex items-center gap-3">
+				<ThemeToggle />
+				<button onClick={handleModalToggle} className="text-2xl text-[var(--fg)]">
 					<MenuIcon />
 				</button>
 			</div>
@@ -44,20 +47,22 @@ export default function Header() {
 						position: "absolute",
 						top: "0",
 						right: "0",
-						//height: "100%", 
+						//height: "100%",
 						borderRadius: "8px 0 0 8px",
-						background: "rgba(0, 0, 0, 0.7)",
+						background: "var(--bg-raised)",
+						border: "1px solid var(--border)",
+						borderRight: "none",
 					},
 				}}
 				transitionDuration={500}
 			>
-				<div className="flex flex-col items-center justify-center p-4 bg-slate-300 text-gray-900 w-full">
+				<div className="flex flex-col items-center justify-center p-4 w-full" style={{ color: "var(--fg)" }}>
 					<div className="w-full text-right mb-2">
-						<button onClick={handleModalToggle} className="text-black text-md">
+						<button onClick={handleModalToggle} className="text-md" style={{ color: "var(--fg)" }}>
 							<CancelIcon />
 						</button>
 					</div>
-					<nav className="flex flex-col gap-4 text-xl">
+					<nav className="font-mono flex flex-col gap-4 text-xl">
 						<Link href={"/about"} onClick={handleModalToggle}>About</Link>
 						<Link href={"/experience"} onClick={handleModalToggle}>Experience</Link>
 						<Link href={"/projects"} onClick={handleModalToggle}>Projects</Link>

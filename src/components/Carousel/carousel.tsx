@@ -12,13 +12,6 @@ export default function Carousel(props: CarouselProps) {
 	const images = props.images;
 	const [currentIndex, setCurrentIndex] = useState(0);
 
-	useEffect(() => {
-		const interval = setInterval(() => {
-			handleNext();
-		}, 4000);
-		return () => clearInterval(interval);
-	}, [currentIndex]);
-
 	const handlePrev = () => {
 		setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
 	};
@@ -26,6 +19,13 @@ export default function Carousel(props: CarouselProps) {
 	const handleNext = () => {
 		setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
 	};
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			handleNext();
+		}, 4000);
+		return () => clearInterval(interval);
+	}, [currentIndex]);
 
 	const getIndex = (index: number) => {
 		return (index + images.length) % images.length;

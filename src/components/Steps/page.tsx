@@ -15,6 +15,7 @@ import { StepConnector } from "@mui/material";
 import SchoolRoundedIcon from "@mui/icons-material/SchoolRounded";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import CodeIcon from "@mui/icons-material/Code";
+import { experienceRoles } from "@/data/experience";
 
 interface StepsProps {
   setShow: (value: string) => void;
@@ -24,48 +25,26 @@ interface StepsProps {
 export default function Steps(props: StepsProps) {
   const { setShow, show } = props;
   const [activeStep, setActiveStep] = useState<number | null>(0);
-  const experiencesArr = [
-    {
-      label: "App Dev Engineer II",
-      company: "NCR Atleos, Gurugram",
-      duration: "July 2024 - March 2025",
-      showValue: "sde2",
-      image:
-        "https://cdn.prod.website-files.com/64a2be73942e1d57fed077f3/6542574c8c3cdac8d63a601d_favicon-32x32.png",
-    },
-    {
-      label: "App Dev Engineer I",
-      company: "NCR Atleos, Gurugram",
-      duration: "October 2023 - June 2024",
-      showValue: "sde1a",
-      image:
-        "https://cdn.prod.website-files.com/64a2be73942e1d57fed077f3/6542574c8c3cdac8d63a601d_favicon-32x32.png",
-    },
-    {
-      label: "App Dev Engineer I",
-      company: "NCR Corporation, Gurugram",
-      duration: "January 2022 - September 2023",
-      showValue: "sde1v",
-      image:
-        "https://assets-global.website-files.com/65cce1f867021e739dcf43b2/65e7908bf2de77b03652e57b_favicon-32x32.png",
-    },
-    {
-      label: "App Dev Analyst",
-      company: "NCR Corporation, Gurugram",
-      duration: "May 2021 - December 2021",
-      showValue: "analyst",
-      image:
-        "https://assets-global.website-files.com/65cce1f867021e739dcf43b2/65e7908bf2de77b03652e57b_favicon-32x32.png",
-    },
-    {
-      label: "Internships",
-      company: "",
-      duration: "",
-      showValue: "internships",
-      icon: <LightbulbIcon />,
-      isInternship: true,
-    },
-  ];
+  const experiencesArr = experienceRoles.map((role) =>
+    role.isInternship
+      ? {
+          label: role.title,
+          company: "",
+          duration: "",
+          showValue: role.id,
+          icon: <LightbulbIcon />,
+          isInternship: true,
+          internships: role.internships ?? [],
+        }
+      : {
+          label: role.title,
+          company: `${role.company}${role.location ? `, ${role.location}` : ""}`,
+          duration: `${role.startDate} - ${role.endDate}`,
+          showValue: role.id,
+          image: role.image,
+          logoBg: role.logoBg,
+        }
+  );
   const educationArr = [
     {
       label: "Bachelors of Technology",
@@ -139,9 +118,8 @@ export default function Steps(props: StepsProps) {
         [`& .${stepClasses.active}`]: {
           [`& .${stepIndicatorClasses.root}`]: {
             border: "4px solid",
-            borderColor: "#fff",
-            boxShadow: (theme) =>
-              `0 0 0 1px ${theme.vars.palette.primary[500]}`,
+            borderColor: "var(--bg-raised)",
+            boxShadow: "0 0 0 1px var(--accent)",
           },
         },
         [`& .${typographyClasses["title-sm"]}`]: {
@@ -150,6 +128,8 @@ export default function Steps(props: StepsProps) {
           fontSize: "10px",
         },
         "& .MuiStep-root:hover": { cursor: "pointer" },
+        color: "var(--fg)",
+        fontFamily: "var(--font-mono)",
       }}
     >
       {props.show === "experience" &&
@@ -165,7 +145,11 @@ export default function Steps(props: StepsProps) {
             }}
             indicator={
               step.image ? (
-                <StepIndicator variant="soft" color="success">
+                <StepIndicator
+                  variant="soft"
+                  color="success"
+                  sx={step.logoBg ? { backgroundColor: step.logoBg } : undefined}
+                >
                   <Image
                     src={step.image}
                     alt="company_logo"
@@ -189,23 +173,13 @@ export default function Steps(props: StepsProps) {
             </div>
             {step.isInternship && (
               <Stack spacing={1}>
-                <div className="flex flex-col">
-                  <span className="text-base">Software Intern</span>
-                  <span className="text-sm">
-                    XeliumTech Solutions, Gurugram
-                  </span>
-                  <span className="text-xs">February 2021 - May 2021</span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-base">Software Intern</span>
-                  <span className="text-sm">Advanced Systemics, Delhi</span>
-                  <span className="text-xs">October 2019 - July 2020</span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-base">Software Intern</span>
-                  <span className="text-sm">Advanced Systemics, Delhi</span>
-                  <span className="text-xs">June 2018 - July 2018</span>
-                </div>
+                {step.internships?.map((entry, i) => (
+                  <div key={i} className="flex flex-col">
+                    <span className="text-base">{entry.title}</span>
+                    <span className="text-sm">{entry.company}</span>
+                    <span className="text-xs">{entry.duration}</span>
+                  </div>
+                ))}
               </Stack>
             )}
             {/* {!step.isInternship && (

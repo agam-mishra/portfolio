@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import ProjectCard from '@/components/Project/projectCard';
 import { ProjectCardSkeleton } from '@/components/Fallback/fallback';
+import Reveal from '@/components/Reveal/reveal';
 
 interface Repo {
 	id: number;
@@ -19,38 +20,45 @@ export default function ProjectPage() {
 	const [error, setError] = useState<string | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 
-	const fetchRepos = async () => {
-		try {
-			const response = await fetch('/api/getRepos');
-
-			if (!response.ok) {
-				const errorData = await response.json();
-				setError(errorData.error || 'Failed to fetch repositories');
-				return;
-			}
-
-			const data = await response.json();
-			setRepos(data);
-		} catch (error) {
-			setError('An error occurred while fetching repositories');
-			console.error('Error:', error);
-		} finally {
-			setIsLoading(false);
-		}
-	};
-
 	useEffect(() => {
+		let cancelled = false;
+
+		const fetchRepos = async () => {
+			try {
+				const response = await fetch('/api/getRepos');
+
+				if (!response.ok) {
+					const errorData = await response.json();
+					if (!cancelled) setError(errorData.error || 'Failed to fetch repositories');
+					return;
+				}
+
+				const data = await response.json();
+				if (!cancelled) setRepos(data);
+			} catch (error) {
+				if (!cancelled) setError('An error occurred while fetching repositories');
+				console.error('Error:', error);
+			} finally {
+				if (!cancelled) setIsLoading(false);
+			}
+		};
+
 		fetchRepos();
 		const timer = setTimeout(() => {
 			fetchRepos();
 		}, 2000);
 
-		return () => clearTimeout(timer);
+		return () => {
+			cancelled = true;
+			clearTimeout(timer);
+		};
 	}, []);
 
 	return (
-		<div className="project flex flex-row gap-4 flex-wrap justify-center">
-			{error && <p className="error">{error}</p>}
+		<div className="project flex flex-col gap-6">
+			<p className="font-mono text-sm text-[var(--accent)] text-center">{"// projects"}</p>
+			<div className="flex flex-row gap-4 flex-wrap justify-center">
+			{error && <p className="text-[var(--fg-muted)]">{error}</p>}
 			{isLoading ? (
 				<>
 					<ProjectCardSkeleton />
@@ -58,10 +66,15 @@ export default function ProjectPage() {
 					<ProjectCardSkeleton />
 				</>
 			) : repos.length > 0 ? (
-				repos.map((repo) => <ProjectCard key={repo.id} repo={repo} />)
+				repos.map((repo, i) => (
+					<Reveal key={repo.id} delay={Math.min(i, 5) * 80} className="basis-full md:basis-1/2">
+						<ProjectCard repo={repo} />
+					</Reveal>
+				))
 			) : (
-				<p>No repositories found.</p>
+				<p className="text-[var(--fg-muted)]">No repositories found.</p>
 			)}
+			</div>
 		</div>
 	);
 }

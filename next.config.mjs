@@ -2,11 +2,10 @@
 
 const nextConfig = {
 	images: {
-		domains: ['cdn.prod.website-files.com', 'assets-global.website-files.com']
-	},
-	backgroundImage: {
-		'experience-bg': "url('public/tech.webp')",
-		'footer-texture': "url('/img/footer-texture.png')"
+		remotePatterns: [
+			{ protocol: 'https', hostname: 'cdn.prod.website-files.com' },
+			{ protocol: 'https', hostname: 'assets-global.website-files.com' },
+		],
 	},
 };
 

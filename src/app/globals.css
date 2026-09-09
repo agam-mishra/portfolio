@@ -1,28 +1,43 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
 
 :root {
-	--foreground-rgb: 0, 0, 0;
-	--background-start-rgb: 214, 219, 220;
-	--background-end-rgb: 255, 255, 255;
+	--bg: #ffffff;
+	--bg-raised: #f4f4f5;
+	--fg: #18181b;
+	--fg-muted: #52525b;
+	--border: #e4e4e7;
+	--accent: #0f766e;
+	--accent-string: #b45309;
+	--accent-keyword: #7e22ce;
 }
 
-/* @media (prefers-color-scheme: dark) {
-	:root {
-		--foreground-rgb: 255, 255, 255;
-		--background-start-rgb: 0, 0, 0;
-		--background-end-rgb: 0, 0, 0;
-	}
-} */
+.dark {
+	--bg: #0b0e14;
+	--bg-raised: #12151d;
+	--fg: #e4e4e7;
+	--fg-muted: #9ca3af;
+	--border: #262a35;
+	--accent: #5eead4;
+	--accent-string: #fbbf24;
+	--accent-keyword: #c4b5fd;
+}
 
 body {
-	color: rgb(var(--foreground-rgb));
-	background: linear-gradient(to bottom, transparent);
+	color: var(--fg);
+	background: var(--bg);
+	transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 @layer utilities {
 	.text-balance {
 		text-wrap: balance;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0.01ms !important;
+		transition-duration: 0.01ms !important;
 	}
 }

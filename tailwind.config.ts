@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+	darkMode: "class",
 	content: [
 		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,7 +10,8 @@ const config: Config = {
 	theme: {
 		fontFamily: {
 			'parkinsans': ["Parkinsans"],
-			'lora': ["Lora"]
+			'lora': ["Lora"],
+			'mono': ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
 		},
 		extend: {
 			backgroundImage: {

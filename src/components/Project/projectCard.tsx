@@ -21,23 +21,34 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ repo }: ProjectCardProps) {
 	return (
-		<Card sx={{ maxWidth: 345, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} className="basis-full md:basis-1/2">
+		<Card
+			sx={{
+				maxWidth: 345,
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'space-between',
+				backgroundColor: 'var(--bg-raised)',
+				border: '1px solid var(--border)',
+				color: 'var(--fg)',
+			}}
+			className="w-full"
+		>
 			<CardMedia
 				sx={{ height: 140 }}
 				image="/images/project/project.svg"
 				title="green iguana"
 			/>
 			<CardContent sx={{ flexGrow: 1 }}>
-				<Typography gutterBottom variant="h5" component="div">
+				<Typography gutterBottom variant="h5" component="div" sx={{ fontFamily: 'var(--font-mono)', color: 'var(--fg)' }}>
 					{repo?.name}
 				</Typography>
-				<Typography variant="body2" sx={{ color: 'text.secondary' }}>
+				<Typography variant="body2" sx={{ color: 'var(--fg-muted)' }}>
 					{repo?.description}
 				</Typography>
 			</CardContent>
 			<CardContent sx={{ margin: "0", paddingY: "0" }}>
-				<Typography className="text-sm">Created on: {formatDate(repo.created_at)}</Typography>
-				<Typography className="text-sm">Updated on: {formatDate(repo.updated_at)}</Typography>
+				<Typography className="text-sm" sx={{ color: 'var(--fg-muted)', fontFamily: 'var(--font-mono)' }}>Created on: {formatDate(repo.created_at)}</Typography>
+				<Typography className="text-sm" sx={{ color: 'var(--fg-muted)', fontFamily: 'var(--font-mono)' }}>Updated on: {formatDate(repo.updated_at)}</Typography>
 			</CardContent>
 			<CardActions sx={{ display: 'flex', justifyContent: 'space-between', padding: '16px' }}>
 				<Button
@@ -45,8 +56,13 @@ export default function ProjectCard({ repo }: ProjectCardProps) {
 					size="small"
 					target="_blank"
 					rel="noopener noreferrer"
-					color="error"
 					variant="outlined"
+					sx={{
+						fontFamily: 'var(--font-mono)',
+						color: 'var(--accent-string)',
+						borderColor: 'var(--accent-string)',
+						'&:hover': { borderColor: 'var(--accent-string)', backgroundColor: 'transparent', opacity: 0.8 },
+					}}
 				>
 					See Demo
 				</Button>
@@ -56,6 +72,12 @@ export default function ProjectCard({ repo }: ProjectCardProps) {
 					target="_blank"
 					rel="noopener noreferrer"
 					variant="outlined"
+					sx={{
+						fontFamily: 'var(--font-mono)',
+						color: 'var(--accent)',
+						borderColor: 'var(--accent)',
+						'&:hover': { borderColor: 'var(--accent)', backgroundColor: 'transparent', opacity: 0.8 },
+					}}
 				>
 					Go to repository
 				</Button>

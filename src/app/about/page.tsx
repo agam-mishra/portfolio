@@ -14,7 +14,7 @@ export default function About() {
 			{/** Stepper tab starts */}
 			<div
 				id="left-content"
-				className="w-1/4 bg-gradient-to-r from-neutral-200 to-neutral-100 py-4 px-1 sticky top-0 hidden lg:block"
+				className="w-1/4 bg-[var(--bg-raised)] border-r border-[var(--border)] py-4 px-1 sticky top-0 hidden lg:block"
 			>
 				<Steps setShow={setShow} show={"about"} />
 			</div>
@@ -31,7 +31,7 @@ export default function About() {
 
 			<div
 				id="right-content"
-				className="lg:w-3/4 py-4 px-4 lg:px-12 bg-gradient-to-r from-neutral-100 to-neutral-200 overflow-y-auto scrollbar-hide"
+				className="lg:w-3/4 py-4 px-4 lg:px-12 bg-[var(--bg)] overflow-y-auto scrollbar-hide"
 			>
 				{show === "services" && <Services />}
 				{show === "technology" && <Technology />}

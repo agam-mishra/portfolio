@@ -5,7 +5,17 @@ const shimmer =
 
 export function ProjectCardSkeleton() {
 	return (
-		<Card sx={{ maxWidth: 345, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} className={`basis-full md:basis-1/2 ${shimmer}`}>
+		<Card
+			sx={{
+				maxWidth: 345,
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'space-between',
+				backgroundColor: 'var(--bg-raised)',
+				border: '1px solid var(--border)',
+			}}
+			className={`basis-full md:basis-1/2 ${shimmer}`}
+		>
 			<CardMedia
 				sx={{ height: 140, maxWidth: 345 }}
 			>
