@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+:root {
+	--bg: #ffffff;
+	--bg-raised: #f4f4f5;
+	--fg: #18181b;
+	--fg-muted: #52525b;
+	--border: #e4e4e7;
+	--accent: #0f766e;
+	--accent-string: #b45309;
+	--accent-keyword: #7e22ce;
+}
+
+.dark {
+	--bg: #0b0e14;
+	--bg-raised: #12151d;
+	--fg: #e4e4e7;
+	--fg-muted: #9ca3af;
+	--border: #262a35;
+	--accent: #5eead4;
+	--accent-string: #fbbf24;
+	--accent-keyword: #c4b5fd;
+}
+
+body {
+	color: var(--fg);
+	background: var(--bg);
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+@layer utilities {
+	.text-balance {
+		text-wrap: balance;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0.01ms !important;
+		transition-duration: 0.01ms !important;
+	}
+}

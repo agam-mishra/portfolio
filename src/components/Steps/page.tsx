@@ -1,0 +1,214 @@
+"use client";
+import {
+  Stepper,
+  stepClasses,
+  stepIndicatorClasses,
+  typographyClasses,
+  Step,
+  StepIndicator,
+  Stack,
+} from "@mui/joy";
+import LightbulbIcon from "@mui/icons-material/Lightbulb";
+import { useState } from "react";
+import Image from "next/image";
+import { StepConnector } from "@mui/material";
+import SchoolRoundedIcon from "@mui/icons-material/SchoolRounded";
+import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
+import CodeIcon from "@mui/icons-material/Code";
+import { experienceRoles } from "@/data/experience";
+
+interface StepsProps {
+  setShow: (value: string) => void;
+  show: String;
+}
+
+export default function Steps(props: StepsProps) {
+  const { setShow, show } = props;
+  const [activeStep, setActiveStep] = useState<number | null>(0);
+  const experiencesArr = experienceRoles.map((role) =>
+    role.isInternship
+      ? {
+          label: role.title,
+          company: "",
+          duration: "",
+          showValue: role.id,
+          icon: <LightbulbIcon />,
+          isInternship: true,
+          internships: role.internships ?? [],
+        }
+      : {
+          label: role.title,
+          company: `${role.company}${role.location ? `, ${role.location}` : ""}`,
+          duration: `${role.startDate} - ${role.endDate}`,
+          showValue: role.id,
+          image: role.image,
+          logoBg: role.logoBg,
+        }
+  );
+  const educationArr = [
+    {
+      label: "Bachelors of Technology",
+      institution: "SRM University, Sonepat, Haryana",
+      duration: "August 2016 - May 2020",
+      showValue: "btech",
+      image: "",
+    },
+    {
+      label: "Higher Secondary School",
+      institution: "Tecnia International, Delhi",
+      duration: "2014 - 2016",
+      showValue: "hsc",
+      image:
+        "https://cdn.prod.website-files.com/64a2be73942e1d57fed077f3/6542574c8c3cdac8d63a601d_favicon-32x32.png",
+    },
+    {
+      label: "Secondary School",
+      institution: "Tecnia International, Delhi",
+      duration: "2014",
+      showValue: "sc",
+      image:
+        "https://cdn.prod.website-files.com/64a2be73942e1d57fed077f3/6542574c8c3cdac8d63a601d_favicon-32x32.png",
+    },
+  ];
+
+  const aboutArr = [
+    {
+      label: "Technologies I Work With",
+      showValue: "technology",
+      icon: <CodeIcon fontSize="large" />,
+    },
+    // {
+    // 	label: "Certifications",
+    // 	showValue: "certifications",
+    // 	icon: <WorkspacePremiumIcon />
+    // },
+    {
+      label: "Services",
+      showValue: "services",
+      icon: <SchoolRoundedIcon fontSize="large" />,
+    },
+  ];
+
+  // Function to scroll the right content to the top
+  const scrollToTop = () => {
+    const rightContent = document.getElementById("right-content");
+    if (rightContent) {
+      rightContent.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleStepClick = (index: number, showValue: string) => {
+    setActiveStep(index);
+    setShow(showValue);
+    scrollToTop();
+  };
+
+  return (
+    <Stepper
+      orientation="vertical"
+      sx={{
+        "--Stepper-verticalGap": "6rem",
+        "--StepIndicator-size": "2.5rem",
+        "--Step-gap": "1rem",
+        "--Step-connectorInset": "0.5rem",
+        "--Step-connectorRadius": "1rem",
+        "--Step-connectorThickness": "0px",
+        "--joy-palette-success-solidBg": "var(--joy-palette-success-400)",
+        maxHeight: "min-content",
+        [`& .${stepClasses.active}`]: {
+          [`& .${stepIndicatorClasses.root}`]: {
+            border: "4px solid",
+            borderColor: "var(--bg-raised)",
+            boxShadow: "0 0 0 1px var(--accent)",
+          },
+        },
+        [`& .${typographyClasses["title-sm"]}`]: {
+          textTransform: "uppercase",
+          letterSpacing: "1px",
+          fontSize: "10px",
+        },
+        "& .MuiStep-root:hover": { cursor: "pointer" },
+        color: "var(--fg)",
+        fontFamily: "var(--font-mono)",
+      }}
+    >
+      {props.show === "experience" &&
+        experiencesArr.map((step, index) => (
+          <Step
+            key={index}
+            active={activeStep === index}
+            completed={activeStep !== null && activeStep !== index}
+            onClick={() => handleStepClick(index, step.showValue)}
+            sx={{
+              opacity: activeStep === null || activeStep === index ? 1 : 0.3,
+              paddingLeft: "5px",
+            }}
+            indicator={
+              step.image ? (
+                <StepIndicator
+                  variant="soft"
+                  color="success"
+                  sx={step.logoBg ? { backgroundColor: step.logoBg } : undefined}
+                >
+                  <Image
+                    src={step.image}
+                    alt="company_logo"
+                    width={32}
+                    height={32}
+                  />
+                </StepIndicator>
+              ) : (
+                <StepIndicator variant="soft" color="neutral">
+                  {step.icon}
+                </StepIndicator>
+              )
+            }
+          >
+            <div className="flex flex-col">
+              <span className="text-lg">{step.label}</span>
+              <span className="text-xs">{step.company}</span>
+              {step.duration && (
+                <span className="text-xs">{step.duration}</span>
+              )}
+            </div>
+            {step.isInternship && (
+              <Stack spacing={1}>
+                {step.internships?.map((entry, i) => (
+                  <div key={i} className="flex flex-col">
+                    <span className="text-base">{entry.title}</span>
+                    <span className="text-sm">{entry.company}</span>
+                    <span className="text-xs">{entry.duration}</span>
+                  </div>
+                ))}
+              </Stack>
+            )}
+            {/* {!step.isInternship && (
+							<StepConnector
+								sx={{
+									display: index === experiencesArr.length - 1 ? 'none' : 'block', // Hide connector for last step
+								}}
+							/>
+						)} */}
+          </Step>
+        ))}
+
+      {props.show === "about" &&
+        aboutArr.map((step, index) => (
+          <Step
+            key={index}
+            active={activeStep === index}
+            completed={activeStep !== null && activeStep !== index}
+            onClick={() => handleStepClick(index, step.showValue)}
+            sx={{
+              opacity: activeStep === null || activeStep === index ? 1 : 0.3, // Dim non-active steps
+            }}
+            indicator={step?.icon}
+          >
+            <div className="flex flex-col">
+              <span className="text-lg">{step.label}</span>
+            </div>
+          </Step>
+        ))}
+    </Stepper>
+  );
+}
