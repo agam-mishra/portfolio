@@ -1,0 +1,1 @@
+export const RESUME_URL = "https://d1be271b8j5lar.cloudfront.net/Agam_Mishra_Resume.pdf";
